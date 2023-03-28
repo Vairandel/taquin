@@ -5,6 +5,15 @@ import java.util.ArrayList;
 public class Status {
     private Integer[][] table;
     private Integer[][] objectif;
+    private Integer nbreDeCoups;
+
+    public Integer getNbreDeCoups() {
+        return nbreDeCoups;
+    }
+
+    public void setNbreDeCoups(Integer nbreDeCoups) {
+        this.nbreDeCoups = nbreDeCoups;
+    }
 
     public Integer[][] getTable() {
         return table;

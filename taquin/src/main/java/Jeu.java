@@ -19,10 +19,11 @@ public class Jeu {
         while (!exist){
             nb++;
             s = lp.prendre();
-            System.out.println("Etat pris" + s.toString());
+            System.out.println("Etat pris" + s.toString() + " Nbre de coups "+s.getNbreDeCoups());
             used.add(s);
             ArrayList<Status> list = s.step();
             for (Status l : list) {
+                l.setNbreDeCoups(s.getNbreDeCoups()+1);
                 Boolean test = false;
                 for (Status stat : used) {
                     if (l.equals(stat)) {
@@ -45,7 +46,8 @@ public class Jeu {
                 if (l.wellPlaced() == 9) {
                     System.out.println(l.toString());
                     exist = true;
-                    System.out.println("Reussi Nombre de coups : " + nb);
+                    System.out.println("Reussi Nombre de coups : " + l.getNbreDeCoups());
+                    System.out.println("Nombre entrée dans la boucle : "+ nb);
                 }
             }
 
@@ -56,6 +58,7 @@ public class Jeu {
             Integer[][] initial = {{6, 3, 1}, {2, 4, 8}, {5, 7, 0}};
             Integer[][] objectif = {{1, 2, 3}, {8, 0, 4}, {7, 6, 5}};
             Status status = new Status(initial);
+            status.setNbreDeCoups(0);
             //System.out.println(status.wellPlaced());
         /*System.out.println("Status initial" + status.toString());
         ArrayList<Status> list = status.step();
